@@ -1,6 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
-require('dotenv').config();
+// require('dotenv').config();
 
 const PORT = process.env.PORT || 3001;
 
@@ -13,8 +13,8 @@ app.use(express.static("public"));
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/stayFitDB", {
   useNewUrlParser: true,
-  useFindAndModify: false
-});
+  useFindAndModify: false,
+  useUnifiedTopology: true,});
 
 // routes
 // app.use(require("./routes/api.js"));
