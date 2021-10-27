@@ -5,10 +5,10 @@ const mongoose = require("mongoose");
 const PORT = process.env.PORT || 3001;
 
 const app = express();
-
+const routes = require('./controllers');
+app.use(routes);
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-
 app.use(express.static("public"));
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/stayFitDB", {
@@ -16,8 +16,6 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/stayFitDB", {
   useFindAndModify: false,
   useUnifiedTopology: true,});
 
-// routes
-// app.use(require("./routes/api.js"));
 
 app.listen(PORT, () => {
   console.log(`App running on port ${PORT}!`);
